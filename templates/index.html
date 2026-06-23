@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 智能客服知识库与客情预警系统</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>AI 智能客服知识库与客情预警系统</h1>
+      <p>基于知识库检索 + 大模型应答 + 实时客情分析</p>
+    </header>
+
+    <div class="main-layout">
+      <!-- 对话主面板 -->
+      <section class="chat-panel">
+        <div class="chat-messages" id="chatMessages">
+          <div class="welcome-card">
+            <h3>👋 您好，我是 AI 智能客服助手</h3>
+            <p>我可以帮您查询订单、退换货、账户等问题。试试下面的快捷提问，或直接输入您的问题。</p>
+            <div class="quick-questions">
+              <button class="quick-btn" data-question="如何查询订单物流？">查询物流</button>
+              <button class="quick-btn" data-question="如何申请退货退款？">退货退款</button>
+              <button class="quick-btn" data-question="忘记密码怎么办？">忘记密码</button>
+              <button class="quick-btn" data-question="我要投诉，太差了！">客情预警测试</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-input-area">
+          <textarea
+            id="messageInput"
+            placeholder="请输入您的问题…（Enter 发送，Shift+Enter 换行）"
+            rows="1"
+          ></textarea>
+          <button class="send-btn" id="sendBtn">发送</button>
+        </div>
+      </section>
+
+      <!-- 侧边信息栏 -->
+      <aside class="sidebar">
+        <div class="side-card">
+          <h3>⚠️ 客情预警</h3>
+          <span class="sentiment-badge normal" id="sentimentBadge">客情正常</span>
+          <p class="sentiment-detail" id="sentimentDetail">等待用户输入以分析客情…</p>
+          <div class="sentiment-triggers" id="sentimentTriggers"></div>
+        </div>
+
+        <div class="side-card">
+          <h3>📚 知识库命中</h3>
+          <div id="knowledgeHits">
+            <p class="empty-hint">发送消息后，此处将展示匹配的知识库条目</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+</body>
+</html>
